@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "MMSearchEngine.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate>
+
+@property (nonatomic, strong) MMSearchEngine *searchEngine;
 
 @end
 
@@ -46,7 +49,17 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self.searchEngine startTwitterSearchWithSearchText:searchBar.text];
     [self.view endEditing:YES];
+}
+
+#pragma mark - Getter
+
+- (MMSearchEngine *)searchEngine {
+    if (!_searchEngine) {
+        _searchEngine = [MMSearchEngine sharedManager];
+    }
+    return _searchEngine;
 }
 
 @end

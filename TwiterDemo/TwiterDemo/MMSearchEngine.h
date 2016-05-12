@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol MMSearchEngineDelegate <NSObject>
+
+- (void)searchText:(NSString *)searchText twitterSearchDidFailed:(NSInteger *)errorCode;
+
+- (void)searchText:(NSString *)searchText twitterSearchDidSucceed:(NSArray *)searchResults;
+
+@end
+
 @interface MMSearchEngine : NSObject
+
+@property (nonatomic, weak) id<MMSearchEngineDelegate> delegate;
+
++ (MMSearchEngine *)sharedManager;
+
+- (void)startTwitterSearchWithSearchText:(NSString *)searchText;
 
 @end
