@@ -8,9 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
-
-
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate>
 
 @end
 
@@ -19,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,7 +26,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.view resignFirstResponder];
+    [self.view endEditing:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -44,6 +43,10 @@
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
     return YES;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self.view endEditing:YES];
 }
 
 @end

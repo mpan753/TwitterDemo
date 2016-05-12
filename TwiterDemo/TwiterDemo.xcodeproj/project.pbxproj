@@ -15,6 +15,7 @@
 		0D46CFEF1CE31F87007DB479 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D46CFED1CE31F87007DB479 /* LaunchScreen.storyboard */; };
 		0D46CFFA1CE31F88007DB479 /* TwiterDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D46CFF91CE31F88007DB479 /* TwiterDemoTests.m */; };
 		0D46D0051CE31F88007DB479 /* TwiterDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D46D0041CE31F88007DB479 /* TwiterDemoUITests.m */; };
+		0D851FF01CE4518800BCE2E8 /* MMSearchEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D851FEF1CE4518800BCE2E8 /* MMSearchEngine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		0D46D0001CE31F88007DB479 /* TwiterDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwiterDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D46D0041CE31F88007DB479 /* TwiterDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwiterDemoUITests.m; sourceTree = "<group>"; };
 		0D46D0061CE31F88007DB479 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D851FEE1CE4518800BCE2E8 /* MMSearchEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSearchEngine.h; sourceTree = "<group>"; };
+		0D851FEF1CE4518800BCE2E8 /* MMSearchEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSearchEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 		0D46CFDE1CE31F87007DB479 /* TwiterDemo */ = {
 			isa = PBXGroup;
 			children = (
+				0D851FEE1CE4518800BCE2E8 /* MMSearchEngine.h */,
+				0D851FEF1CE4518800BCE2E8 /* MMSearchEngine.m */,
 				0D46CFE21CE31F87007DB479 /* AppDelegate.h */,
 				0D46CFE31CE31F87007DB479 /* AppDelegate.m */,
 				0D46CFE51CE31F87007DB479 /* ViewController.h */,
@@ -271,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D46CFE71CE31F87007DB479 /* ViewController.m in Sources */,
+				0D851FF01CE4518800BCE2E8 /* MMSearchEngine.m in Sources */,
 				0D46CFE41CE31F87007DB479 /* AppDelegate.m in Sources */,
 				0D46CFE11CE31F87007DB479 /* main.m in Sources */,
 			);
@@ -496,6 +502,7 @@
 				0D46D00B1CE31F88007DB479 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D46D00C1CE31F88007DB479 /* Build configuration list for PBXNativeTarget "TwiterDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +511,7 @@
 				0D46D00E1CE31F88007DB479 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D46D00F1CE31F88007DB479 /* Build configuration list for PBXNativeTarget "TwiterDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +520,7 @@
 				0D46D0111CE31F88007DB479 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
