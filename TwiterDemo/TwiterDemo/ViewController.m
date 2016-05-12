@@ -49,6 +49,8 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:searchBar.text forKey:@"searchText"];
     [self.searchEngine startTwitterSearchWithSearchText:searchBar.text];
     [self.view endEditing:YES];
 }

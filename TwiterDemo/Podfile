@@ -5,6 +5,7 @@ platform :ios, '8.0'
 
 target 'TwiterDemo' do
 pod 'AFNetworking', '~> 3.0'
+pod 'STTwitter'
 end
 
 target 'TwiterDemoTests' do
