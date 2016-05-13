@@ -10,12 +10,14 @@
 #import "AFNetworking.h"
 #import "Utility.h"
 #import <Accounts/Accounts.h>
+#import "STTwitter.h"
 
 @interface MMHTTPManager ()
 
 @property (nonatomic, strong) AFHTTPSessionManager *httpManager;
 @property (nonatomic, strong) NSURL *baseURLString;
 @property (nonatomic,strong) ACAccountStore *accountStore;
+@property (strong, nonatomic) STTwitterAPI *twitter;
 
 @end
 
@@ -56,14 +58,25 @@ CRManager(MMHTTPManager);
 //    searchText = AFPercentEscapedStringFromString(searchText);
 //    NSString *query = AFQueryStringFromParameters(@{@"q": searchText});
     
-
-    
+    self.twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:@"e7Mhw0VZVIlYCX99Vp2YXIsxP"
+                                              consumerSecret:@"F4IfLlNSsxbsAMe0frPFb6X90PWtjDzK5LVLP7NT4pO1XMR1i0"];
+    [self.twitter verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID) {
+//        self.twitter getSearchTweetsWithQuery:searchText geocode:<#(NSString *)#> lang:<#(NSString *)#> locale:<#(NSString *)#> resultType:<#(NSString *)#> count:<#(NSString *)#> until:<#(NSString *)#> sinceID:<#(NSString *)#> maxID:<#(NSString *)#> includeEntities:<#(NSNumber *)#> callback:<#(NSString *)#> successBlock:<#^(NSDictionary *searchMetadata, NSArray *statuses)successBlock#> errorBlock:<#^(NSError *error)errorBlock#>
+        [self.twitter getSearchTweetsWithQuery:searchText successBlock:^(NSDictionary *searchMetadata, NSArray *statuses) {
+            NSLog(@"success:%@", statuses);
+        } errorBlock:^(NSError *error) {
+            NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+            NSLog(@"err:%@",errResponse);
+        }];
+    } errorBlock:^(NSError *error) {
+        
+    }];
+    /*
     ACAccountType *acountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     [self.accountStore requestAccessToAccountsWithType:acountType options:nil completion:^(BOOL granted, NSError *error) {
         if (granted) {
             
 //            NSLog(@"%@", query);
-            //    [self.httpManager.requestSerializer setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" forHTTPHeaderField:@"Accept"];
             NSLog(@"Request: %@", self.httpManager.requestSerializer.HTTPRequestHeaders);
             [self.httpManager GET:[self URLString] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -74,7 +87,7 @@ CRManager(MMHTTPManager);
             }];
             
         }
-    }];
+    }];*/
     
 }
 
