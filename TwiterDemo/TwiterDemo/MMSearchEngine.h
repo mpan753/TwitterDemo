@@ -19,6 +19,7 @@
 @interface MMSearchEngine : NSObject
 
 @property (nonatomic, weak) id<MMSearchEngineDelegate> delegate;
+@property (nonatomic, strong) NSArray *searchResults;
 
 + (MMSearchEngine *)sharedManager;
 

@@ -8,7 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol MMHTTPManagerDelegate <NSObject>
+
+- (void)didReceiveSearchResults:(NSMutableArray *)searchResults;
+
+@end
+
 @interface MMHTTPManager : NSObject
+
+@property (nonatomic, weak) id<MMHTTPManagerDelegate> delegate;
 
 + (MMHTTPManager *)sharedManager;
 

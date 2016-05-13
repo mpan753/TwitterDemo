@@ -9,9 +9,12 @@
 #import "ViewController.h"
 #import "MMSearchEngine.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate>
+#import "TwitterResult.h"
+
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate, MMSearchEngineDelegate>
 
 @property (nonatomic, strong) MMSearchEngine *searchEngine;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -20,7 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,11 +39,16 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return self.searchEngine.searchResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    TwitterResult *result = self.searchEngine.searchResults[indexPath.row];
+    cell.textLabel.text = result.text;
+    
+    return cell;
 }
 
 #pragma mark - UISearchBarDelegate
@@ -55,11 +64,24 @@
     [self.view endEditing:YES];
 }
 
+
+
+#pragma mark - MMSearchEngineDelegate
+
+- (void)searchText:(NSString *)searchText twitterSearchDidSucceed:(NSArray *)searchResults {
+    [self.tableView reloadData];
+}
+
+- (void)searchText:(NSString *)searchText twitterSearchDidFailed:(NSInteger *)errorCode {
+    
+}
+
 #pragma mark - Getter
 
 - (MMSearchEngine *)searchEngine {
     if (!_searchEngine) {
         _searchEngine = [MMSearchEngine sharedManager];
+        _searchEngine.delegate = self;
     }
     return _searchEngine;
 }

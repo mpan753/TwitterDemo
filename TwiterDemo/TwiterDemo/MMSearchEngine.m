@@ -10,7 +10,7 @@
 #import "MMHTTPManager.h"
 #import "Utility.h"
 
-@interface MMSearchEngine ()
+@interface MMSearchEngine () <MMHTTPManagerDelegate>
 
 @property (nonatomic, strong) MMHTTPManager *httpNetwork;
 
@@ -23,12 +23,30 @@ CRManager(MMSearchEngine);
 - (instancetype)init {
     if (self = [super init]) {
         self.httpNetwork = [MMHTTPManager sharedManager];
+        self.httpNetwork.delegate = self;
     }
     return self;
 }
 
 - (void)startTwitterSearchWithSearchText:(NSString *)searchText {
     [self.httpNetwork startSearchWithSearchText:searchText];
+}
+
+#pragma mark - Getter
+
+- (NSArray *)searchResults {
+    if (!_searchResults) {
+        _searchResults = @[];
+    }
+    return _searchResults;
+}
+
+#pragma mark - MMHTTPManagerDelegate
+
+- (void)didReceiveSearchResults:(NSMutableArray *)searchResults {
+    NSString *searchText = [[NSUserDefaults standardUserDefaults] objectForKey:@"searchText"];
+    self.searchResults = searchResults.copy;
+    [self.delegate searchText:searchText twitterSearchDidSucceed:self.searchResults];
 }
 
 @end

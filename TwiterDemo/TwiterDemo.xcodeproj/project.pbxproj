@@ -17,8 +17,9 @@
 		0D46D0051CE31F88007DB479 /* TwiterDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D46D0041CE31F88007DB479 /* TwiterDemoUITests.m */; };
 		0D851FF01CE4518800BCE2E8 /* MMSearchEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D851FEF1CE4518800BCE2E8 /* MMSearchEngine.m */; };
 		0D851FF51CE4626300BCE2E8 /* MMHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D851FF41CE4626300BCE2E8 /* MMHTTPManager.m */; };
-		1D5CCE4A9644199C0C477646 /* libPods-TwiterDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BE472B1694DACA343D2E87 /* libPods-TwiterDemo.a */; };
-		64B9D41321ED95D0BC618A1A /* libPods-TwiterDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2E1C4A0F48055A293F221 /* libPods-TwiterDemoTests.a */; };
+		0DEA16B71CE5B4C000242E47 /* TwitterResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA16B61CE5B4C000242E47 /* TwitterResult.m */; };
+		C6FDE152A92DAA91A21DDF0A /* Pods_TwiterDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B202E73EAEE4700A695B77 /* Pods_TwiterDemo.framework */; };
+		FCEE241507B0AD7EDF746561 /* Pods_TwiterDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF58AEFE31CC42AFC55C1280 /* Pods_TwiterDemoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,12 +62,14 @@
 		0D851FF21CE45E6800BCE2E8 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		0D851FF31CE4626300BCE2E8 /* MMHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMHTTPManager.h; sourceTree = "<group>"; };
 		0D851FF41CE4626300BCE2E8 /* MMHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMHTTPManager.m; sourceTree = "<group>"; };
-		25C2E1C4A0F48055A293F221 /* libPods-TwiterDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TwiterDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DEA16B51CE5B4C000242E47 /* TwitterResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterResult.h; sourceTree = "<group>"; };
+		0DEA16B61CE5B4C000242E47 /* TwitterResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterResult.m; sourceTree = "<group>"; };
 		3CB3AFB8CEA48EE1A6877E86 /* Pods-TwiterDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwiterDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwiterDemo/Pods-TwiterDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		40B202E73EAEE4700A695B77 /* Pods_TwiterDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwiterDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		453D70D31CDADDEE1C74436D /* Pods-TwiterDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwiterDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwiterDemoTests/Pods-TwiterDemoTests.release.xcconfig"; sourceTree = "<group>"; };
-		70BE472B1694DACA343D2E87 /* libPods-TwiterDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TwiterDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CDB147519A8E807C47915E3 /* Pods-TwiterDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwiterDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwiterDemo/Pods-TwiterDemo.release.xcconfig"; sourceTree = "<group>"; };
 		A044A5EC9D0BCB0C962A038A /* Pods-TwiterDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwiterDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwiterDemoTests/Pods-TwiterDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CF58AEFE31CC42AFC55C1280 /* Pods_TwiterDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwiterDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D5CCE4A9644199C0C477646 /* libPods-TwiterDemo.a in Frameworks */,
+				C6FDE152A92DAA91A21DDF0A /* Pods_TwiterDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64B9D41321ED95D0BC618A1A /* libPods-TwiterDemoTests.a in Frameworks */,
+				FCEE241507B0AD7EDF746561 /* Pods_TwiterDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +126,8 @@
 			children = (
 				0D851FF11CE45C7100BCE2E8 /* Utility.h */,
 				0D851FF21CE45E6800BCE2E8 /* Defines.h */,
+				0DEA16B51CE5B4C000242E47 /* TwitterResult.h */,
+				0DEA16B61CE5B4C000242E47 /* TwitterResult.m */,
 				0D851FF61CE466CC00BCE2E8 /* Http */,
 				0D851FEE1CE4518800BCE2E8 /* MMSearchEngine.h */,
 				0D851FEF1CE4518800BCE2E8 /* MMSearchEngine.m */,
@@ -177,8 +182,8 @@
 		2500D6B03CC9F73C3E3901F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				70BE472B1694DACA343D2E87 /* libPods-TwiterDemo.a */,
-				25C2E1C4A0F48055A293F221 /* libPods-TwiterDemoTests.a */,
+				40B202E73EAEE4700A695B77 /* Pods_TwiterDemo.framework */,
+				CF58AEFE31CC42AFC55C1280 /* Pods_TwiterDemoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -427,6 +432,7 @@
 				0D851FF01CE4518800BCE2E8 /* MMSearchEngine.m in Sources */,
 				0D46CFE41CE31F87007DB479 /* AppDelegate.m in Sources */,
 				0D46CFE11CE31F87007DB479 /* main.m in Sources */,
+				0DEA16B71CE5B4C000242E47 /* TwitterResult.m in Sources */,
 				0D851FF51CE4626300BCE2E8 /* MMHTTPManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
