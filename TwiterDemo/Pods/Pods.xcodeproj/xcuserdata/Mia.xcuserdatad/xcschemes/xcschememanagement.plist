@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TwiterDemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,17 +37,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>17B426F7C303C5A1A922C08A721FA367</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3D468DE0D620F7101CDB9ECBDB091409</key>
+		<key>4DC92E7D3C881AE7781B7E75625C0A13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4EFAD5CF924C6E50F65158D20A861038</key>
+		<key>834FF43754AC5881C4FF3C5A605C51AE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE51A84F68BB5DE77C3D8E485715A9E0</key>
+		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
 		<dict>
 			<key>primary</key>
 			<true/>

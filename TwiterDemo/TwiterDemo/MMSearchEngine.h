@@ -10,7 +10,7 @@
 
 @protocol MMSearchEngineDelegate <NSObject>
 
-- (void)searchText:(NSString *)searchText twitterSearchDidFailed:(NSInteger *)errorCode;
+- (void)searchText:(NSString *)searchText twitterSearchDidFailed:(NSInteger)errorCode;
 
 - (void)searchText:(NSString *)searchText twitterSearchDidSucceed:(NSArray *)searchResults;
 

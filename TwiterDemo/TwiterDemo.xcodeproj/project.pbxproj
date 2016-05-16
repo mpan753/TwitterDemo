@@ -17,6 +17,8 @@
 		0D46D0051CE31F88007DB479 /* TwiterDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D46D0041CE31F88007DB479 /* TwiterDemoUITests.m */; };
 		0D851FF01CE4518800BCE2E8 /* MMSearchEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D851FEF1CE4518800BCE2E8 /* MMSearchEngine.m */; };
 		0D851FF51CE4626300BCE2E8 /* MMHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D851FF41CE4626300BCE2E8 /* MMHTTPManager.m */; };
+		0D9192241CE9B94E00D63CDF /* TwitterResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9192231CE9B94E00D63CDF /* TwitterResultTableViewCell.m */; };
+		0D9192261CE9BE3600D63CDF /* TwitterResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9192251CE9BE3600D63CDF /* TwitterResultTableViewCell.xib */; };
 		0DEA16B71CE5B4C000242E47 /* TwitterResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA16B61CE5B4C000242E47 /* TwitterResult.m */; };
 		C6FDE152A92DAA91A21DDF0A /* Pods_TwiterDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B202E73EAEE4700A695B77 /* Pods_TwiterDemo.framework */; };
 		FCEE241507B0AD7EDF746561 /* Pods_TwiterDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF58AEFE31CC42AFC55C1280 /* Pods_TwiterDemoTests.framework */; };
@@ -62,6 +64,9 @@
 		0D851FF21CE45E6800BCE2E8 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		0D851FF31CE4626300BCE2E8 /* MMHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMHTTPManager.h; sourceTree = "<group>"; };
 		0D851FF41CE4626300BCE2E8 /* MMHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMHTTPManager.m; sourceTree = "<group>"; };
+		0D9192221CE9B94E00D63CDF /* TwitterResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterResultTableViewCell.h; sourceTree = "<group>"; };
+		0D9192231CE9B94E00D63CDF /* TwitterResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterResultTableViewCell.m; sourceTree = "<group>"; };
+		0D9192251CE9BE3600D63CDF /* TwitterResultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterResultTableViewCell.xib; sourceTree = "<group>"; };
 		0DEA16B51CE5B4C000242E47 /* TwitterResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterResult.h; sourceTree = "<group>"; };
 		0DEA16B61CE5B4C000242E47 /* TwitterResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterResult.m; sourceTree = "<group>"; };
 		3CB3AFB8CEA48EE1A6877E86 /* Pods-TwiterDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwiterDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwiterDemo/Pods-TwiterDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +140,9 @@
 				0D46CFE31CE31F87007DB479 /* AppDelegate.m */,
 				0D46CFE51CE31F87007DB479 /* ViewController.h */,
 				0D46CFE61CE31F87007DB479 /* ViewController.m */,
+				0D9192221CE9B94E00D63CDF /* TwitterResultTableViewCell.h */,
+				0D9192231CE9B94E00D63CDF /* TwitterResultTableViewCell.m */,
+				0D9192251CE9BE3600D63CDF /* TwitterResultTableViewCell.xib */,
 				0D46CFE81CE31F87007DB479 /* Main.storyboard */,
 				0D46CFEB1CE31F87007DB479 /* Assets.xcassets */,
 				0D46CFED1CE31F87007DB479 /* LaunchScreen.storyboard */,
@@ -308,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D9192261CE9BE3600D63CDF /* TwitterResultTableViewCell.xib in Resources */,
 				0D46CFEF1CE31F87007DB479 /* LaunchScreen.storyboard in Resources */,
 				0D46CFEC1CE31F87007DB479 /* Assets.xcassets in Resources */,
 				0D46CFEA1CE31F87007DB479 /* Main.storyboard in Resources */,
@@ -430,6 +439,7 @@
 			files = (
 				0D46CFE71CE31F87007DB479 /* ViewController.m in Sources */,
 				0D851FF01CE4518800BCE2E8 /* MMSearchEngine.m in Sources */,
+				0D9192241CE9B94E00D63CDF /* TwitterResultTableViewCell.m in Sources */,
 				0D46CFE41CE31F87007DB479 /* AppDelegate.m in Sources */,
 				0D46CFE11CE31F87007DB479 /* main.m in Sources */,
 				0DEA16B71CE5B4C000242E47 /* TwitterResult.m in Sources */,

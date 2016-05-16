@@ -49,4 +49,9 @@ CRManager(MMSearchEngine);
     [self.delegate searchText:searchText twitterSearchDidSucceed:self.searchResults];
 }
 
+- (void)failedToReceiveSearchResults:(NSError *)error {
+    NSString *searchText = [[NSUserDefaults standardUserDefaults] objectForKey:@"searchText"];
+    [self.delegate searchText:searchText twitterSearchDidFailed:-1];
+}
+
 @end

@@ -12,6 +12,8 @@
 
 - (void)didReceiveSearchResults:(NSMutableArray *)searchResults;
 
+- (void)failedToReceiveSearchResults:(NSError *)error;
+
 @end
 
 @interface MMHTTPManager : NSObject

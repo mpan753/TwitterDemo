@@ -9,6 +9,7 @@
 #import "MMHTTPManager.h"
 #import "AFNetworking.h"
 #import "Utility.h"
+#import "Defines.h"
 #import <Accounts/Accounts.h>
 #import "STTwitter.h"
 #import "SBJson4.h"
@@ -24,6 +25,8 @@
 @property (nonatomic, strong) STTwitterAPI *twitter;
 @property (nonatomic, strong) NSMutableArray *twitterSearchResults;
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *location;
+@property (nonatomic, strong) NSString *geoCode;
 
 @end
 
@@ -34,6 +37,7 @@ CRManager(MMHTTPManager);
 - (instancetype)init {
     if (self = [super init]) {
         self.httpManager = [AFHTTPSessionManager manager];
+    
         [self.locationManager requestWhenInUseAuthorization];
         [self.locationManager startUpdatingLocation];
     }
@@ -41,13 +45,12 @@ CRManager(MMHTTPManager);
 }
 
 - (NSString *)baseURLString {
-//    return [NSURL URLWithString:@"https://twitter.com/"];
     return @"https://api.twitter.com/1.1/search/tweets.json";
 }
 
 - (NSString *)URLString {
     NSString *searchText = [[NSUserDefaults standardUserDefaults] valueForKey:@"searchText"];
-    searchText = AFPercentEscapedStringFromString(searchText);
+//    searchText = AFPercentEscapedStringFromString(searchText);
     NSString *query = AFQueryStringFromParameters(@{@"q": searchText});
     
     return [self.baseURLString.mutableCopy stringByAppendingString:[NSString stringWithFormat:@"?%@", query]];
@@ -63,73 +66,32 @@ CRManager(MMHTTPManager);
 - (CLLocationManager *)locationManager {
     if (!_locationManager) {
         _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
     }
     return _locationManager;
 }
 
-/*- (ACAccountStore *)accountStore
-{
-    if (_accountStore == nil) {
-        _accountStore = [[ACAccountStore alloc] init];
-    }
-    return _accountStore;
-}
- */
-
 - (void)startSearchWithSearchText:(NSString *)searchText {
-//    self.httpManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    searchText = AFPercentEscapedStringFromString(searchText);
-//    NSString *query = AFQueryStringFromParameters(@{@"q": searchText});
+    
     [self.twitterSearchResults removeAllObjects];
-    self.twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:@"e7Mhw0VZVIlYCX99Vp2YXIsxP" consumerSecret:@"F4IfLlNSsxbsAMe0frPFb6X90PWtjDzK5LVLP7NT4pO1XMR1i0"];
+    self.twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:CONSUMERKEY consumerSecret:CONSUMERSECRET];
+    
     [self.twitter verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID) {
         
-        
-        
-        [self.twitter getSearchTweetsWithQuery:searchText geocode:nil lang:nil locale:nil resultType:nil count:nil until:nil sinceID:nil maxID:nil includeEntities:nil callback:nil successBlock:^(NSDictionary *searchMetadata, NSArray *statuses) {
-//            NSLog(@"success:%@", statuses);
+        [self.twitter getSearchTweetsWithQuery:searchText geocode:self.geoCode lang:nil locale:nil resultType:nil count:nil until:nil sinceID:nil maxID:nil includeEntities:nil callback:nil successBlock:^(NSDictionary *searchMetadata, NSArray *statuses) {
             [self parseDataFromResponse:statuses];
             [self.delegate didReceiveSearchResults:self.twitterSearchResults];
         } errorBlock:^(NSError *error) {
-            NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
-            NSLog(@"err:%@",errResponse);
+            [self.delegate failedToReceiveSearchResults:error];
         }];
-        /*
-        [self.twitter getSearchTweetsWithQuery:searchText successBlock:^(NSDictionary *searchMetadata, NSArray *statuses) {
-            NSLog(@"success:%@", statuses);
-        } errorBlock:^(NSError *error) {
-            NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
-            NSLog(@"err:%@",errResponse);
-        }];
-         */
+    
     } errorBlock:^(NSError *error) {
-        
+        [self.delegate failedToReceiveSearchResults:error];
     }];
-    
-    
-    /*
-    ACAccountType *acountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    [self.accountStore requestAccessToAccountsWithType:acountType options:nil completion:^(BOOL granted, NSError *error) {
-        if (granted) {
-            
-//            NSLog(@"%@", query);
-            NSLog(@"Request: %@", self.httpManager.requestSerializer.HTTPRequestHeaders);
-            [self.httpManager GET:[self URLString] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                NSLog(@"responseObject:%@", responseString);
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
-                NSLog(@"err:%@",errResponse);
-            }];
-            
-        }
-    }];*/
     
 }
 
 - (void)parseDataFromResponse:(NSArray *)statuses{
-    
-//    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
     for (NSDictionary *userDict in statuses) {
         
@@ -137,29 +99,16 @@ CRManager(MMHTTPManager);
         [self.twitterSearchResults addObject:tweetResult];
 
     }
-    
-//    if ([appDelegate.managedObjectContext hasChanges]) {
-//        NSError *saveErr;
-//        [appDelegate.managedObjectContext save:&saveErr];
-//    }
-}
-
-- (CLLocationCoordinate2D)getLocation {
-    CLLocation *location = [self.locationManager location];
-    CLLocationCoordinate2D coordinate = [location coordinate];
-    
-    return coordinate;
 }
 
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    CLLocationCoordinate2D coordinate = [self getLocation];
-    NSString *latitude = [NSString stringWithFormat:@"%f", coordinate.latitude];
-    NSString *longitude = [NSString stringWithFormat:@"%f", coordinate.longitude];
-    
-    NSLog(@"*dLatitude : %@", latitude);
-    NSLog(@"*dLongitude : %@",longitude);
+    self.location = [self.locationManager location];
+    CLLocationCoordinate2D coordinate = [self.location coordinate];
+    NSNumber *radius = @(1);
+    self.geoCode = [NSString stringWithFormat:@"%f,%f,%@mi", coordinate.latitude, coordinate.longitude, radius];
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -169,11 +118,6 @@ CRManager(MMHTTPManager);
     
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:ok];
-    
-//    [self presentViewController:alertController animated:YES completion:nil];
-//    UIAlertView *errorAlert = [[UIAlertView alloc]
-//                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    [errorAlert show];
 }
 
 @end

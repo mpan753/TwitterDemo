@@ -85,11 +85,13 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-TwiterDemo/AFNetworking.framework"
+  install_framework "Pods-TwiterDemo/MBProgressHUD.framework"
   install_framework "Pods-TwiterDemo/SBJson.framework"
   install_framework "Pods-TwiterDemo/STTwitter.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-TwiterDemo/AFNetworking.framework"
+  install_framework "Pods-TwiterDemo/MBProgressHUD.framework"
   install_framework "Pods-TwiterDemo/SBJson.framework"
   install_framework "Pods-TwiterDemo/STTwitter.framework"
 fi
