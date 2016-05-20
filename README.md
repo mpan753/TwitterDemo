@@ -1,3 +1,3 @@
 # TwitterDemo
-This is a simple twitter demo used to an interview.
+This is the running picture.
 ![alt tag](https://github.com/mpan753/TwitterDemo/blob/master/running%20picture.png)
